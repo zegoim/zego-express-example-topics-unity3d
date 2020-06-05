@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using ZEGO;
 public class QuickStartDemo : MonoBehaviour
 {
-    IZegoExpressEngine engine;
+    ZegoExpressEngine engine;
     System.Random random = new System.Random();
     Text info;
     Dictionary<string, string> infos = new Dictionary<string, string>();
@@ -31,11 +31,11 @@ public class QuickStartDemo : MonoBehaviour
         info = GameObject.Find("InformationText").GetComponent<Text>();
         if (infos.ContainsKey(sdkVersion))
         {
-            infos[sdkVersion] = "SDK Version:" + IZegoExpressEngine.GetVersion() + "\n";
+            infos[sdkVersion] = "SDK Version:" + ZegoExpressEngine.GetVersion() + "\n";
         }
         else
         {
-            infos.Add(sdkVersion, "SDK Version:" + IZegoExpressEngine.GetVersion() + "\n");
+            infos.Add(sdkVersion, "SDK Version:" + ZegoExpressEngine.GetVersion() + "\n");
         }
         NotifyTextDisplay();
     }
@@ -106,12 +106,12 @@ public class QuickStartDemo : MonoBehaviour
 
     public void CreateEngine()
     {
-        engine = IZegoExpressEngine.CreateEngine(123, "xxx", true, ZegoScenario.General);
+        engine = ZegoExpressEngine.CreateEngine(123, "xxx", true, ZegoScenario.General);
     }
     public void DestroyEngine()
     {
 
-        IZegoExpressEngine.DestroyEngine(() => { Debug.Log("destroy engine callback success"); });
+        ZegoExpressEngine.DestroyEngine(() => { Debug.Log("destroy engine callback success"); });
     }
     public void OnExpressEngineDestroy()
     {
@@ -222,7 +222,7 @@ public class QuickStartDemo : MonoBehaviour
     GameObject mainLocalVideoPlane = null;
     public void OnPreviewButtonClicked()//preview use rawimage
     {
-        engine.StartPreview();
+        
 
         mainLocalVideoPlane = GameObject.Find("MainPreViewRawImage");
 
@@ -235,6 +235,9 @@ public class QuickStartDemo : MonoBehaviour
 
             localVideoSurface.transform.Rotate(180.0f, 0.0f, 0.0f);
         }
+
+
+        engine.StartPreview();
     }
 
     public void StopPreview()
@@ -253,10 +256,6 @@ public class QuickStartDemo : MonoBehaviour
         {
 
             ShowPlaySteamId(text.text);
-            engine.onPlayerStateUpdate = OnPlayerStateUpdate;
-            engine.onPlayerMediaEvent = OnPlayerMediaEvent;
-            engine.onPlayerQualityUpdate = OnPlayerQualityUpdate;
-            engine.StartPlayingStream(text.text);
             currentPlayStreamId = text.text;
             remoteVideoPlane = GameObject.Find("PlayRender");
             if (remoteVideoPlane != null)
@@ -274,6 +273,10 @@ public class QuickStartDemo : MonoBehaviour
                     remoteVideoSurface.SetVideoSource(engine);
                 }
             }
+            engine.onPlayerStateUpdate = OnPlayerStateUpdate;
+            engine.onPlayerMediaEvent = OnPlayerMediaEvent;
+            engine.onPlayerQualityUpdate = OnPlayerQualityUpdate;
+            engine.StartPlayingStream(text.text);
         }
     }
     public void ShowPlaySteamId(string streamId)
