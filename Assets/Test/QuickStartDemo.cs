@@ -21,6 +21,8 @@ public class QuickStartDemo : MonoBehaviour
     private ArrayList permissionList = new ArrayList();
     GameObject remoteVideoPlane;
     private DeviceOrientation preOrientation = DeviceOrientation.Unknown;
+    private uint appId = ;
+    private string appSign = ;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,7 +108,7 @@ public class QuickStartDemo : MonoBehaviour
 
     public void CreateEngine()
     {
-        engine = ZegoExpressEngine.CreateEngine(123, "xxx", true, ZegoScenario.General);
+        engine = ZegoExpressEngine.CreateEngine(appId, appSign, true, ZegoScenario.General);
     }
     public void DestroyEngine()
     {
@@ -210,7 +212,7 @@ public class QuickStartDemo : MonoBehaviour
 
     private void OnPublisherQualityUpdate(string streamId, ZegoPublishStreamQuality quality)
     {
-        Debug.Log("OnPublisherQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.quality + "\n audio_send_bytes:" + quality.audioSendBytes + "\n video_capture_fps:" + quality.videoCaptureFps);
+        Debug.Log("OnPublisherQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_send_bytes:" + quality.audioSendBytes + "\n video_capture_fps:" + quality.videoCaptureFps);
     }
 
     public void StopPublishingStream()
@@ -232,8 +234,6 @@ public class QuickStartDemo : MonoBehaviour
 
             localVideoSurface.SetCaptureVideoInfo();
             localVideoSurface.SetVideoSource(engine);
-
-            localVideoSurface.transform.Rotate(180.0f, 0.0f, 0.0f);
         }
 
 
@@ -295,7 +295,7 @@ public class QuickStartDemo : MonoBehaviour
     }
     private void OnPlayerQualityUpdate(string streamId, ZegoPlayStreamQuality quality)
     {
-        Debug.Log("OnPlayerQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.quality + "\n audio_render_fps:" + quality.audioRenderFps + "\n video_recv_fps:" + quality.videoRecvFps);
+        Debug.Log("OnPlayerQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_render_fps:" + quality.audioRenderFps + "\n video_recv_fps:" + quality.videoRecvFps);
 
     }
 
@@ -326,5 +326,9 @@ public class QuickStartDemo : MonoBehaviour
     {
         Debug.Log("OnPlayerStateUpdate:" + "stream_id:" + streamId + "\n state:" + state + "\n error_code:" + errorCode + "\n extended_data:" + extendedData);
 
+    }
+    void OnApplicationQuit()
+    {//It must be added for unity editor debugging, otherwise it will cause unity to be stuck
+        ZegoExpressEngine.DestroyEngine();
     }
 }
