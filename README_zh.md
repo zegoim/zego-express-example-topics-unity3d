@@ -8,7 +8,7 @@ Zego Express Example Topics Unity (c#) 示例专题 Demo
 
 此 Repository 中可能缺少运行 Demo 工程所需的SDK ，需要下载SDK并将Plugins和Scripts文件夹放入 Demo 工程的 `Assets` 文件夹下。
 
-**[https://storage.zego.im/express/video/unity3d/en/zego-express-video-unity3d-en.zip](https://storage.zego.im/express/video/unity3d/en/zego-express-video-unity3d-en.zip)**
+**[https://storage.zego.im/express/video/unity3d/zego-express-video-unity3d.zip](https://storage.zego.im/express/video/unity3d/zego-express-video-unity3d.zip)**
 
 最终, 目录下的结构应如下
 

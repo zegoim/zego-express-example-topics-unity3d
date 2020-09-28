@@ -7,7 +7,7 @@ Zego Express Example Topics Unity (c#)
 ## Download SDK
 
 The SDK required to run the Demo project may be missing from this Repository. You need to download the SDK and put the Plugins and Scripts folders into the Demo project's Assets folder.
-**[https://storage.zego.im/express/video/unity3d/en/zego-express-video-unity3d-en.zip](https://storage.zego.im/express/video/unity3d/en/zego-express-video-unity3d-en.zip)**
+**[https://storage.zego.im/express/video/unity3d/zego-express-video-unity3d.zip](https://storage.zego.im/express/video/unity3d/zego-express-video-unity3d.zip)**
 
 Finally, the structure under the directory should be as follows
 
