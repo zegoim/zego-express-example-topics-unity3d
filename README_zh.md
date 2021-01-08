@@ -28,4 +28,4 @@ Zego Express Example Topics Unity (c#) 示例专题 Demo
 
 ## 填写 SDK 所需的 appID 与 appSign
 
-到 [ZEGO 管理控制台](https://console-express.zego.im/acount/register) 申请 appID 与 appSign , 然后将其填入 `QuickStartDemo.cs`的ZegoExpressEngine.CreateEngine方法中，否则在首次编译时会在这个文件报错。
+到 [ZEGO 管理控制台](https://console-express.zego.im/acount/register) 申请 appID 与 appSign , 然后将其填入 `GetAppIdConfig.cs`文件中，否则在首次编译时会在这个文件报错。

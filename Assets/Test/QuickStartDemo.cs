@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
@@ -21,8 +22,6 @@ public class QuickStartDemo : MonoBehaviour
     private ArrayList permissionList = new ArrayList();
     GameObject remoteVideoPlane;
     private DeviceOrientation preOrientation = DeviceOrientation.Unknown;
-    private uint appId = ;
-    private string appSign = ;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +107,7 @@ public class QuickStartDemo : MonoBehaviour
 
     public void CreateEngine()
     {
-        engine = ZegoExpressEngine.CreateEngine(appId, appSign, true, ZegoScenario.General);
+        engine = ZegoExpressEngine.CreateEngine(GetAppIdConfig.appId, GetAppIdConfig.appSign, true, ZegoScenario.General);
     }
     public void DestroyEngine()
     {
@@ -132,12 +131,12 @@ public class QuickStartDemo : MonoBehaviour
     {
         engine.LogoutRoom("123666");
     }
-    private void OnRoomStreamUpdate(string roomId, ZegoUpdateType updateType, List<ZegoStream> streamInfoList, uint streamInfoCount)
+    private void OnRoomStreamUpdate(string roomId, ZegoUpdateType updateType, List<ZegoStream> streamInfoList, string extendData)
     {
-        Debug.Log("OnRoomStreamUpdate:" + "room_id:" + roomId + "\n zego_update_type:" + updateType + "\n zego_stream count:" + streamInfoList.Count + "\n =:" + streamInfoCount);
+        Debug.Log(String.Format("OnRoomStreamUpdate1 room_id:{0} zego_update_type:{1}  extendData:{2} streamInfoCount:{3}", roomId, updateType, extendData, streamInfoList.Count));
         for (int i = 0; i < streamInfoList.Count; i++)
         {
-            Debug.Log("OnRoomStreamUpdate:" + "user_id:" + streamInfoList[i].user.userId + "\n user_name:" + streamInfoList[i].user.userName + "\n stream_id:" + streamInfoList[i].streamId);
+            Debug.Log(String.Format("OnRoomStreamUpdate2: user_id:{0} user_name:{1} stream_id:{2}", streamInfoList[i].user.userID, streamInfoList[i].user.userName, streamInfoList[i].streamID));
 
         }
     }
@@ -147,7 +146,7 @@ public class QuickStartDemo : MonoBehaviour
         Debug.Log("OnRoomUserUpdate:" + "room_id:" + roomId + "\n zego_update_type:" + updateType + "\n zego_user count:" + userList.Count + "\n =:" + userCount);
         for (int i = 0; i < userList.Count; i++)
         {
-            Debug.Log("OnRoomUserUpdate:" + "user_id:" + userList[i].userId + "\n user_name:" + userList[i].userName);
+            Debug.Log("OnRoomUserUpdate:" + "user_id:" + userList[i].userID + "\n user_name:" + userList[i].userName);
 
         }
     }
@@ -212,7 +211,7 @@ public class QuickStartDemo : MonoBehaviour
 
     private void OnPublisherQualityUpdate(string streamId, ZegoPublishStreamQuality quality)
     {
-        Debug.Log("OnPublisherQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_send_bytes:" + quality.audioSendBytes + "\n video_capture_fps:" + quality.videoCaptureFps);
+        Debug.Log("OnPublisherQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_send_bytes:" + quality.audioSendBytes + "\n video_capture_fps:" + quality.videoCaptureFPS);
     }
 
     public void StopPublishingStream()
@@ -263,7 +262,7 @@ public class QuickStartDemo : MonoBehaviour
                 if (remoteVideoSurface == null)//Avoid repeated Add Component causing strange problems such as video freeze
                 {
                     remoteVideoSurface = remoteVideoPlane.AddComponent<RendererVideoSurface>();
-                    remoteVideoSurface.transform.Rotate(-90.0f, 0.0f, 0.0f); //Avoid repeatedly setting rotation etc.
+                    remoteVideoSurface.transform.Rotate(90.0f, -180.0f, 0.0f); //Avoid repeatedly setting rotation etc.
                     remoteVideoSurface.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
                     remoteVideoSurface.transform.localScale = new Vector3(0.36f, 1f, 0.64f);
                 }
@@ -295,7 +294,7 @@ public class QuickStartDemo : MonoBehaviour
     }
     private void OnPlayerQualityUpdate(string streamId, ZegoPlayStreamQuality quality)
     {
-        Debug.Log("OnPlayerQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_render_fps:" + quality.audioRenderFps + "\n video_recv_fps:" + quality.videoRecvFps);
+        Debug.Log("OnPlayerQualityUpdate:" + "stream_id:" + streamId + "\n zego_stream_quality:" + quality.level + "\n audio_render_fps:" + quality.audioRenderFPS + "\n video_recv_fps:" + quality.videoRecvFPS);
 
     }
 

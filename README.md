@@ -27,4 +27,4 @@ Finally, the structure under the directory should be as follows
 
 ## Fill in the appID and appSign required by the SDK
 
-Go to [ZEGO Management Console](https://console-express.zego.im/acount/register) and apply for appID and appSign, then fill it in the ZegoExpressEngine.CreateEngine method of `QuickStartDemo.cs`, otherwise compile for the first time Will report an error in this file.
+Go to [ZEGO Management Console](https://console-express.zego.im/acount/register) and apply for appID and appSign, then fill it in the  `GetAppIdConfig.cs` file, otherwise compile for the first time Will report an error in this file.
