@@ -5,7 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: 
     guid: e070f4265d46746b49df7409ed68cfea
+  - enabled: 1
+    path: Assets/Scenes/HomePage.unity
+    guid: ec44009e934fa5c418b063ed9a96eb60
+  - enabled: 1
+    path: Assets/Scenes/VideoTalk_Step1.unity
+    guid: db3fb2bfba569ca468283c6e956174fd
+  - enabled: 1
+    path: Assets/Scenes/VideoTalk_Step2.unity
+    guid: c260c05e02fa75c4aafc42f90bdf78b7
+  - enabled: 1
+    path: Assets/Scenes/CommonUsage.unity
+    guid: 65b615a89391aed4eaad13de673d8f9c
+  - enabled: 1
+    path: Assets/Scenes/PublishingStream.unity
+    guid: e0dd67ff636ef084e825ab5497f3819c
+  - enabled: 1
+    path: Assets/Scenes/PlayingStream.unity
+    guid: 570f1e1fb711cdc498facc3489bb72ed
+  - enabled: 1
+    path: Assets/Scenes/RangeAudio.unity
+    guid: 644f547bd966e8b44bafc5428418e4e2
+  - enabled: 1
+    path: Assets/Scenes/Setting.unity
+    guid: 6f679521af689ff45973c481a87fe640
+  - enabled: 1
+    path: Assets/Scenes/StreamByCDN.unity
+    guid: 146ecd826ba73294294717b20eb85ca5
+  - enabled: 1
+    path: Assets/Scenes/StreamMonitoring.unity
+    guid: cee3c0a4042629945962d25f14fe1f57
+  - enabled: 1
+    path: Assets/Scenes/VoiceReverbStereo.unity
+    guid: f5d70304f98de24438cc0b1e09337355
   m_configObjects: {}
